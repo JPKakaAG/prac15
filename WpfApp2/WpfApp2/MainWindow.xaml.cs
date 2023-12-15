@@ -26,19 +26,31 @@ namespace WpfApp2
 
         private void btn_calculate_clk(object sender, RoutedEventArgs e)
         {
-            int minVal, maxVal, size;
-            int[] numbers;
-            if (int.TryParse(TBminVal.Text, out minVal) && int.TryParse(TBmaxVal.Text, out maxVal) && int.TryParse(TBsize.Text, out size))
+            try
             {
-                ArrayUtils.FillArrayRandom(out numbers, size, minVal, maxVal);
-                
-                DG.ItemsSource = ArrayUtils.ToDataTable(numbers).DefaultView;
-                int difference = v11.CalculateDifference(numbers);
-                MessageBox.Show($"Разница чисел: {difference}", "Результат");
+                int minVal, maxVal, size;
+                int[] numbers;
+
+                if (int.TryParse(TBminVal.Text, out minVal) && int.TryParse(TBmaxVal.Text, out maxVal) && int.TryParse(TBsize.Text, out size))
+                {
+                    ArrayUtils.FillArrayRandom(out numbers, size, minVal, maxVal);
+
+                    DG.ItemsSource = ArrayUtils.ToDataTable(numbers).DefaultView;
+                    int difference = v11.CalculateDifference(numbers);
+                    MessageBox.Show($"Разница чисел: {difference}", "Результат");
+                }
+                else
+                {
+                    MessageBox.Show("Введите корректный размер массива и числа от, до");
+                }
             }
-            else
+            catch (FormatException)
             {
-                MessageBox.Show("Введите корректный размер массива и числа от, до");
+                MessageBox.Show("Некорректный формат введенных данных. Убедитесь, что вводимые значения являются целыми числами.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
     }

@@ -31,17 +31,29 @@ namespace WpfApp3
 
         private void btn_rez_click(object sender, RoutedEventArgs e)
         {
-            int rows, cols;
-            if (int.TryParse(TBrows.Text, out rows) && int.TryParse(TBcols.Text, out cols))
+            try
             {
-                int[,] myArray = new int[rows, cols];
-                ArrayUtils.Fill2Array(myArray);
-                DG.ItemsSource = ArrayUtils.ToDataTable(myArray).DefaultView;
-                MessageBox.Show("максимальный среди минимальных элементов:" + v11.FindMaxAmongMin(myArray));
+                int rows, cols;
+
+                if (int.TryParse(TBrows.Text, out rows) && int.TryParse(TBcols.Text, out cols))
+                {
+                    int[,] myArray = new int[rows, cols];
+                    ArrayUtils.Fill2Array(myArray);
+                    DG.ItemsSource = ArrayUtils.ToDataTable(myArray).DefaultView;
+                    MessageBox.Show("максимальный среди минимальных элементов:" + v11.FindMaxAmongMin(myArray));
+                }
+                else
+                {
+                    MessageBox.Show("Введите корректный размер массива.");
+                }
             }
-            else
+            catch (FormatException)
             {
-                MessageBox.Show("Введите корректный размер массива.");
+                MessageBox.Show("Некорректный формат введенных данных. Убедитесь, что вводимые значения являются целыми числами.");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Произошла ошибка: {ex.Message}");
             }
         }
         
