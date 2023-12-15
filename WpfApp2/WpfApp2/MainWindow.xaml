@@ -1,0 +1,21 @@
+﻿<Window x:Class="WpfApp2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfApp2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <Button x:Name="btn_calculate" Click="btn_calculate_clk" Content="Вычислить" HorizontalAlignment="Left" Margin="258,296,0,0" VerticalAlignment="Top" Width="120"/>
+        <DataGrid x:Name="DG" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="10,10,-10,256"/>
+        <TextBox x:Name="TBsize" HorizontalAlignment="Left" Margin="120,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Размер массива" HorizontalAlignment="Left" Margin="131,217,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="TBminVal" HorizontalAlignment="Left" Margin="258,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="TBmaxVal" HorizontalAlignment="Left" Margin="395,243,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Заполнить массив рандомными числами" HorizontalAlignment="Left" Margin="271,191,0,0" VerticalAlignment="Top"/>
+        <Label Content="от" HorizontalAlignment="Left" Margin="307,217,0,0" VerticalAlignment="Top"/>
+        <Label Content="до" HorizontalAlignment="Left" Margin="436,217,0,0" VerticalAlignment="Top"/>
+
+    </Grid>
+</Window>
